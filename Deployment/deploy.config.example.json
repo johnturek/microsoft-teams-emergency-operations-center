@@ -1,0 +1,76 @@
+# TEOC One-Click Deployment Configuration
+# Copy this file to deploy.config.json and fill in your values
+# DO NOT commit deploy.config.json with real values!
+
+{
+  "deployment": {
+    "name": "TEOC-Deployment",
+    "environment": "production",
+    "region": "eastus"
+  },
+
+  "azure": {
+    "subscriptionId": "",
+    "resourceGroupName": "rg-teoc-prod",
+    "baseResourceName": "teoc",
+    "location": "eastus",
+    "hostingPlanSku": "Standard",
+    "hostingPlanSize": "2"
+  },
+
+  "azureAd": {
+    "tenantId": "",
+    "tenantName": "",
+    "appName": "Teams EOC Application",
+    "replyUrls": [],
+    "apiScopes": [
+      "access_as_user"
+    ]
+  },
+
+  "sharepoint": {
+    "siteName": "Teams EOC",
+    "siteUrl": "",
+    "adminEmail": "",
+    "pnpClientId": ""
+  },
+
+  "teams": {
+    "appId": "bef61400-db9b-41d4-a617-403deb7bbe77",
+    "appName": "TEOC",
+    "appShortName": "TEOC",
+    "accentColor": "#FFFFFF",
+    "publishToStore": false,
+    "autoInstall": true
+  },
+
+  "graph": {
+    "baseUrl": "https://graph.microsoft.com/",
+    "oauthAuthority": "https://login.microsoftonline.com"
+  },
+
+  "features": {
+    "applicationInsights": true,
+    "azureMaps": false,
+    "azureMapsKey": ""
+  },
+
+  "deployment_options": {
+    "skipSharePointProvisioning": false,
+    "skipAzureADAppRegistration": false,
+    "skipAzureDeployment": false,
+    "skipTeamsAppPackaging": false,
+    "skipTeamsAppInstallation": false,
+    "skipSharePointExtension": false,
+    "createBackup": true,
+    "validateBeforeDeployment": true
+  },
+
+  "advanced": {
+    "gitRepoUrl": "https://github.com/OfficeDev/microsoft-teams-emergency-operations-center.git",
+    "gitBranch": "main",
+    "customDomain": "",
+    "certificateThumbprint": "",
+    "enableCDN": false
+  }
+}

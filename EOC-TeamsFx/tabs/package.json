@@ -13,11 +13,11 @@
         "@microsoft/mgt-teamsfx-provider": "^4.2.1",
         "@microsoft/microsoft-graph-client": "3.0.1",
         "@microsoft/teams-js": "^2.21.0",
-        "@microsoft/teamsfx": "2.1.0",
+        "@microsoft/teamsfx": "^4.0.2",
         "@microsoft/teamsfx-react": "^2.1.1",
         "@react-pdf/renderer": "3.1.12",
         "@types/loadable__component": "^5.13.4",
-        "axios": "^0.21.1",
+        "axios": "^1.6.0",
         "azure-maps-control": "^3.3.0",
         "bootstrap": "5.2.3",
         "botframework-streaming": "^4.22.1",
@@ -55,7 +55,9 @@
         "nth-check": "2.0.1"
     },
     "overrides": {
-        "@microsoft/teamsfx": "2.1.0",
+        "@microsoft/teamsfx": "^4.0.2",
+        "@azure/identity": "^4.2.1",
+        "axios": "^1.6.0",
         "@fluentui/react-components": "9.48.0",
         "@fluentui/react-button": "9.3.75",
         "@fluentui/react-checkbox": "9.2.20",
@@ -86,7 +88,10 @@
     },
     "devDependencies": {
         "@babel/plugin-proposal-private-property-in-object": "7.21.11",
+        "@babel/helpers": "^7.26.10",
         "@babel/traverse": ">=7.23.2",
+        "husky": "^8.0.3",
+        "lint-staged": "^15.2.0",
         "@types/jest": "^26.0.15",
         "@types/node": "^14.0.0",
         "@types/react": "^17.0.0",
@@ -107,12 +112,22 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "lint": "eslint src --ext .ts,.tsx --max-warnings 0",
+        "lint:fix": "eslint src --ext .ts,.tsx --fix",
+        "test": "react-scripts test",
+        "test:coverage": "react-scripts test --coverage --watchAll=false",
+        "prepare": "cd ../.. && husky install EOC-TeamsFx/tabs/.husky",
+        "pre-commit": "lint-staged"
     },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
+    "lint-staged": {
+        "src/**/*.{ts,tsx}": [
+            "eslint --fix",
+            "git add"
+        ],
+        "src/**/*.{ts,tsx,json,css,scss,md}": [
+            "prettier --write",
+            "git add"
         ]
     },
     "browserslist": {
