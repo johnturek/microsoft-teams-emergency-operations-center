@@ -61,6 +61,7 @@ export interface IIncidentDetailsProps {
     currentThemeName: string;
     appSettings: any;
     editIncidentAccessRole: string;
+    cloudEnvironment?: string;
 }
 
 export interface IIncidentDetailsState {
@@ -2344,7 +2345,7 @@ class IncidentDetails extends React.PureComponent<IIncidentDetailsProps, IIncide
                     let inviteRequest = {
                         "invitedUserEmailAddress": user.email.trim(),
                         "invitedUserDisplayName": user.displayName.trim(),
-                        "inviteRedirectUrl": this.props.graphBaseUrl !== constants.defaultGraphBaseURL ? constants.teamsWebUrlGCCH : constants.teamsWebUrl
+                        "inviteRedirectUrl": constants.getTeamsWebUrl(this.props.graphBaseUrl, this.props.cloudEnvironment)
                     }
                     try {
                         //Adding guest users to Azure

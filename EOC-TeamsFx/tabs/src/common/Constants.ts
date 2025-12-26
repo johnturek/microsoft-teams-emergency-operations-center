@@ -47,6 +47,7 @@ export const githubEocUrl = "https://aka.ms/m365teocapp";
 
 export const teamsWebUrl = "https://teams.microsoft.com";
 export const teamsWebUrlGCCH = "https://gov.teams.microsoft.us";
+export const teamsWebUrlDoD = "https://dod.teams.microsoft.us";
 
 export const componentNames = {
     EOCHomeComponent: 'EOCHome',
@@ -141,9 +142,35 @@ export const noneOption = "None";
 export const defaultOutlookBaseURL = "https://outlook.office365.com/.default";
 export const outlookAPIFindLocations = "https://outlook.office365.com/SchedulingB2/api/v1.0/me/findmeetinglocations";
 
-//location picker for GCCH
+//location picker for GCCH and DoD (both use same endpoints)
 export const defaultOutlookBaseURLGCCH = "https://outlook.office365.us/.default";
 export const outlookAPIFindLocationsGCCH = "https://outlook.office365.us/SchedulingB2/api/v1.0/me/findmeetinglocations";
+
+//Cloud environment types
+export const cloudEnvironments = {
+    Commercial: "Commercial",
+    GCCH: "GCCH",
+    DOD: "DOD"
+};
+
+//Helper function to get the appropriate Teams web URL based on graph base URL and cloud environment
+export const getTeamsWebUrl = (graphBaseUrl: string, cloudEnvironment?: string): string => {
+    // Validate that the URL is a government cloud endpoint (microsoft.us)
+    const isGovernmentCloud = graphBaseUrl !== defaultGraphBaseURL && 
+                              (graphBaseUrl.includes('microsoft.us') || graphBaseUrl.includes('.us/'));
+    
+    // If using government cloud endpoints
+    if (isGovernmentCloud) {
+        // Check if cloud environment is explicitly set to DOD
+        if (cloudEnvironment === cloudEnvironments.DOD) {
+            return teamsWebUrlDoD;
+        }
+        // Default to GCCH for government cloud
+        return teamsWebUrlGCCH;
+    }
+    // Default to commercial
+    return teamsWebUrl;
+};
 
 //Exception Codes
 export const authorizationRequestDenied = "Authorization_RequestDenied";

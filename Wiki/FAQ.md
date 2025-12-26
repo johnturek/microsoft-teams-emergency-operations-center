@@ -7,7 +7,7 @@ Tasks in Active Bridge component has some known limitations as below -
 
 ![Limitation](./Images/AddTask.png)
 
-- In GCCH tenant, task will not get added when it's assigned to some one through the People Picker, however user can still create a task without an Assignee.
+- In GCCH and DoD tenants, task will not get added when it's assigned to some one through the People Picker, however user can still create a task without an Assignee.
 
 ![Limitation](./Images/GCCHTasks.png)
 
@@ -60,6 +60,6 @@ The fsevents library is causing the app service deployment to fail for already d
 
 Yes, TEOC v1.0 supports the desktop, mobile and tab devices.
 
-## 6. Does the app works in GCC/GCCH tenant?
+## 6. Does the app works in GCC/GCCH/DoD tenant?
 
-Yes, TEOC v2.0 works in Commercial, GCC and GCCH tenants.
+Yes, TEOC v2.0 works in Commercial, GCC, GCCH, and DoD tenants.

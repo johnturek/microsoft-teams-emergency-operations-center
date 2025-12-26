@@ -38,6 +38,9 @@ let siteName = process.env.REACT_APP_SHAREPOINT_SITE_NAME?.toString().replace(/\
 let graphBaseURL = process.env.REACT_APP_GRAPH_BASE_URL?.toString().replace(/\s+/g, '');
 graphBaseURL = graphBaseURL || constants.defaultGraphBaseURL;
 
+//Get cloud environment type (Commercial, GCCH, DOD)
+let cloudEnvironment = process.env.REACT_APP_CLOUD_ENVIRONMENT?.toString().trim() || constants.cloudEnvironments.Commercial;
+
 interface IEOCHomeState {
     showLoginPage: boolean;
     graph: Client;
@@ -83,6 +86,7 @@ interface IEOCHomeState {
     appTitleData: any;
     editIncidentAccessRole: string;
     editIncidentAccessRoleData: any;
+    cloudEnvironment: string;
 }
 
 interface IEOCHomeProps {
@@ -155,7 +159,8 @@ export default class EOCHome extends React.Component<IEOCHomeProps, IEOCHomeStat
             appTitle: siteConfig.appTitle,
             appTitleData: {},         
             editIncidentAccessRole: "",
-            editIncidentAccessRoleData: {}   
+            editIncidentAccessRoleData: {},
+            cloudEnvironment: cloudEnvironment
         }
 
         this.showActiveBridge = this.showActiveBridge.bind(this);
@@ -915,6 +920,7 @@ export default class EOCHome extends React.Component<IEOCHomeProps, IEOCHomeStat
                                                                             currentThemeName={this.state.currentThemeName}
                                                                             appSettings={this.state.appSettings}
                                                                             editIncidentAccessRole={this.state.editIncidentAccessRole}
+                                                                            cloudEnvironment={this.state.cloudEnvironment}
                                                                         />
                                                                         :
                                                                         <Dialog
@@ -946,6 +952,7 @@ export default class EOCHome extends React.Component<IEOCHomeProps, IEOCHomeStat
                                                                     currentThemeName={this.state.currentThemeName}
                                                                     appSettings={this.state.appSettings}
                                                                     editIncidentAccessRole={this.state.editIncidentAccessRole}
+                                                                    cloudEnvironment={this.state.cloudEnvironment}
                                                                 />
                                                             }
                                                         </>
