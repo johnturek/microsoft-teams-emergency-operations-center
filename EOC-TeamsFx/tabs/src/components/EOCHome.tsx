@@ -38,7 +38,7 @@ let siteName = process.env.REACT_APP_SHAREPOINT_SITE_NAME?.toString().replace(/\
 let graphBaseURL = process.env.REACT_APP_GRAPH_BASE_URL?.toString().replace(/\s+/g, '');
 graphBaseURL = graphBaseURL || constants.defaultGraphBaseURL;
 
-//Get cloud environment type (Commercial, GCCH, DoD)
+//Get cloud environment type (Commercial, GCCH, DOD)
 let cloudEnvironment = process.env.REACT_APP_CLOUD_ENVIRONMENT?.toString().trim() || constants.cloudEnvironments.Commercial;
 
 interface IEOCHomeState {

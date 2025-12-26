@@ -28,10 +28,10 @@ describe('Constants', () => {
             expect(result).toBe(constants.teamsWebUrlGCCH);
         });
 
-        it('should return DoD Teams URL for DoD environment', () => {
+        it('should return DOD Teams URL for DOD environment', () => {
             const result = constants.getTeamsWebUrl(
                 'https://graph.microsoft.us/',
-                constants.cloudEnvironments.DoD
+                constants.cloudEnvironments.DOD
             );
             expect(result).toBe(constants.teamsWebUrlDoD);
         });
@@ -54,7 +54,7 @@ describe('Constants', () => {
         it('should have correct cloud environment types', () => {
             expect(constants.cloudEnvironments.Commercial).toBe('Commercial');
             expect(constants.cloudEnvironments.GCCH).toBe('GCCH');
-            expect(constants.cloudEnvironments.DoD).toBe('DoD');
+            expect(constants.cloudEnvironments.DOD).toBe('DOD');
         });
     });
 

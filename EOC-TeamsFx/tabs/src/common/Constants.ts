@@ -150,7 +150,7 @@ export const outlookAPIFindLocationsGCCH = "https://outlook.office365.us/Schedul
 export const cloudEnvironments = {
     Commercial: "Commercial",
     GCCH: "GCCH",
-    DoD: "DoD"
+    DOD: "DOD"
 };
 
 //Helper function to get the appropriate Teams web URL based on graph base URL and cloud environment
@@ -161,8 +161,8 @@ export const getTeamsWebUrl = (graphBaseUrl: string, cloudEnvironment?: string):
     
     // If using government cloud endpoints
     if (isGovernmentCloud) {
-        // Check if cloud environment is explicitly set to DoD
-        if (cloudEnvironment === cloudEnvironments.DoD) {
+        // Check if cloud environment is explicitly set to DOD
+        if (cloudEnvironment === cloudEnvironments.DOD) {
             return teamsWebUrlDoD;
         }
         // Default to GCCH for government cloud
