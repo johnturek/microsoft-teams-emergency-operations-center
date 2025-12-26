@@ -275,6 +275,23 @@ FakesAssemblies/
 .ntvs_analysis.dat
 node_modules/
 
+# Environment files - prevent committing secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+!.env.example
+
+# Test coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Jest
+jest-results.json
+
 # Visual Studio 6 build log
 *.plg
 
