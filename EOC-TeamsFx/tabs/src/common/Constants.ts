@@ -155,8 +155,12 @@ export const cloudEnvironments = {
 
 //Helper function to get the appropriate Teams web URL based on graph base URL and cloud environment
 export const getTeamsWebUrl = (graphBaseUrl: string, cloudEnvironment?: string): string => {
+    // Validate that the URL is a government cloud endpoint (microsoft.us)
+    const isGovernmentCloud = graphBaseUrl !== defaultGraphBaseURL && 
+                              (graphBaseUrl.includes('microsoft.us') || graphBaseUrl.includes('.us/'));
+    
     // If using government cloud endpoints
-    if (graphBaseUrl !== defaultGraphBaseURL) {
+    if (isGovernmentCloud) {
         // Check if cloud environment is explicitly set to DoD
         if (cloudEnvironment === cloudEnvironments.DoD) {
             return teamsWebUrlDoD;

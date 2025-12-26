@@ -43,6 +43,11 @@ describe('Constants', () => {
             );
             expect(result).toBe(constants.teamsWebUrlGCCH);
         });
+
+        it('should return commercial Teams URL for non-government graph URL', () => {
+            const result = constants.getTeamsWebUrl('https://graph.example.com/');
+            expect(result).toBe(constants.teamsWebUrl);
+        });
     });
 
     describe('cloud environment constants', () => {
