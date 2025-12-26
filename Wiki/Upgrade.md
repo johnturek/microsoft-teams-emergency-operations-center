@@ -18,7 +18,7 @@
   
   1. Clone the [repository](https://github.com/OfficeDev/microsoft-teams-emergency-operations-center.git) locally. Open the `Deployment/provisioning/Upgrade` folder to get the latest provisioning files i.e `Update-EOC-Provision.ps1` and `Update-EOC-SiteTemplate-From-V1.0.xml` ( If you are upgrading the app from 1.0 version ) or `Update-EOC-SiteTemplate-From-V0.5.xml` ( If you are upgrading the app from 0.5 or 0.5.1 version ) or `Update-EOC-SiteTemplate-From-V2.0-Later` (If you are upgrading the app from 2.0 or later versions)
 
-  2. Run the PowerShell script "Update-EOC-Provision.ps1"(commercial,GCC) or "Update-EOC-Provision-GCCH"(GCC-H) as an Administrator, script will ask for below inputs:
+  2. Run the PowerShell script "Update-EOC-Provision.ps1"(commercial,GCC), "Update-EOC-Provision-GCCH.ps1"(GCCH), or "Update-EOC-Provision-DoD.ps1"(DoD) as an Administrator, script will ask for below inputs:
     
     * XML file path – enter fully qualified path of the XML file (Ex: C:\Scripts\Update-EOC-SiteTemplate-From-V1.0.xml) 
     * Tenant Name – Name of the tenant where the SharePoint site was already provisioned (Ex: Contoso)
