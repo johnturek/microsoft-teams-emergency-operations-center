@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running pre-commit checks..."
+
+cd EOC-TeamsFx/tabs
+
+# Run linter
+echo "📝 Linting staged files..."
+npm run lint-staged
+
+# Run type check
+echo "🔎 Type checking..."
+npm run tsc --noEmit || {
+    echo "❌ TypeScript errors found. Please fix them before committing."
+    exit 1
+}
+
+# Check for console.log
+echo "🚫 Checking for console.log statements..."
+if git diff --cached --name-only | grep -E '\.(ts|tsx)$' | xargs grep -n 'console\.log' 2>/dev/null; then
+    echo "❌ Found console.log statements. Please use Logger instead."
+    echo "   Import: import Logger from './common/Logger';"
+    echo "   Usage: Logger.info('message', { context });"
+    exit 1
+fi
+
+echo "✅ Pre-commit checks passed!"
